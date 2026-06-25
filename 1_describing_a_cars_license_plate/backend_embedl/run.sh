@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Atalho para iniciar o backend em modo desenvolvimento.
+# Shortcut to start the backend in development mode:
 
 set -euo pipefail
 
@@ -9,8 +9,8 @@ cd "$SCRIPT_DIR"
 HOST="${HOST:-0.0.0.0}"
 PORT="${PORT:-8000}"
 
-echo "Iniciando backend_embedl em http://$HOST:$PORT"
-echo "Documentacao: http://$HOST:$PORT/docs"
+echo "Starting backend_embedl at http://$HOST:$PORT"
+echo "Documentation: http://$HOST:$PORT/docs"
 echo ""
 
 uv run uvicorn app.main:app --host "$HOST" --port "$PORT" --reload
