@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Senior Data Scientist.: Dr. Eddy Giusepe Chirinos Isidro
 # Shortcut to start the backend in development mode:
 
 set -euo pipefail
