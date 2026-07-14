@@ -26,6 +26,7 @@ def setup_logging() -> None:
             logging.StreamHandler(),
         ],
     )
+    logging.getLogger("httpx").setLevel(logging.WARNING)
 
 
 if __name__ == "__main__":
