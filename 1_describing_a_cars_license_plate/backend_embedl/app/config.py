@@ -42,6 +42,8 @@ class Settings(BaseSettings):
     ]
 
     MODEL_NAME: str = "embedl/Cosmos-Reason2-2B-W4A16"
+    HUGGINGFACE_TOKEN: str | None = None
+    HF_TOKEN: str | None = None
     DEVICE: str = "auto"
     DTYPE: str = "auto"
     ATTN_IMPLEMENTATION: str = "sdpa"
@@ -73,6 +75,15 @@ class Settings(BaseSettings):
     def allowed_extensions(self) -> set[str]:
         """Set of all allowed extensions."""
         return self.ALLOWED_IMAGE_EXTENSIONS | self.ALLOWED_VIDEO_EXTENSIONS
+
+    @property
+    def huggingface_token(self) -> str | None:
+        """Token used to access private or gated Hugging Face models."""
+        token = self.HUGGINGFACE_TOKEN or self.HF_TOKEN
+        if not token:
+            return None
+        token = token.strip()
+        return token or None
 
 
 @lru_cache
