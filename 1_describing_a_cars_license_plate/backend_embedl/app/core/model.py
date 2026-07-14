@@ -61,15 +61,39 @@ class EmbedlVLM:
             cls._dtype,
         )
 
-        cls._model = transformers.Qwen3VLForConditionalGeneration.from_pretrained(
-            settings.MODEL_NAME,
-            torch_dtype=cls._dtype,
-            device_map=cls._device,
-            low_cpu_mem_usage=True,
-            attn_implementation=settings.ATTN_IMPLEMENTATION,
-        )
+        hf_token = settings.huggingface_token
+        hub_kwargs = {"token": hf_token} if hf_token else {}
+        if hf_token:
+            logger.info("Using Hugging Face token from environment settings.")
 
-        cls._processor = transformers.AutoProcessor.from_pretrained(settings.MODEL_NAME)
+        try:
+            cls._model = transformers.Qwen3VLForConditionalGeneration.from_pretrained(
+                settings.MODEL_NAME,
+                torch_dtype=cls._dtype,
+                device_map=cls._device,
+                low_cpu_mem_usage=True,
+                attn_implementation=settings.ATTN_IMPLEMENTATION,
+                **hub_kwargs,
+            )
+
+            cls._processor = transformers.AutoProcessor.from_pretrained(
+                settings.MODEL_NAME,
+                **hub_kwargs,
+            )
+        except OSError as exc:
+            cls._model = None
+            cls._processor = None
+            cls._loaded = False
+            raise RuntimeError(
+                "Failed to load the Hugging Face model or processor. "
+                "If the repository is private or gated, check that "
+                "HUGGINGFACE_TOKEN or HF_TOKEN is valid and has access."
+            ) from exc
+        except Exception:
+            cls._model = None
+            cls._processor = None
+            cls._loaded = False
+            raise
 
         cls._model.eval()
         cls._loaded = True
