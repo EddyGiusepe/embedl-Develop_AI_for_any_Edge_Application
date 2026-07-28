@@ -14,7 +14,7 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
+/lib/
 lib64/
 parts/
 sdist/
@@ -221,3 +221,5 @@ __marimo__/
 # EddyGiusepe:
 data/
 future_improvements_to_be_edge_ai.md
+yolov8n.pt
+video_sample_40s.mp4
