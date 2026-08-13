@@ -18,10 +18,10 @@ interface JobProgressProps {
 }
 
 const STATUS_LABEL: Record<JobStatusValue, string> = {
-  queued: "Na fila",
-  processing: "Processando",
-  completed: "Concluido",
-  failed: "Falhou",
+  queued: "In Queue",
+  processing: "Processing",
+  completed: "Completed",
+  failed: "Failed",
 };
 
 const STATUS_VALUE: Record<JobStatusValue, number> = {
