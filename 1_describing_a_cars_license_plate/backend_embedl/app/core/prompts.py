@@ -128,6 +128,9 @@ exactly as shown, and all VALUES must be written in English:
 - Stop immediately after the **Confidence** field. Do NOT add validation
   sentences, summaries, explanations, or conclusions after the structured
   fields.
+- The **Country** field is the SOVEREIGN NATION (e.g., United States, Canada,
+  Brazil). A state or province name (e.g., a US state or a Canadian province)
+  is NOT a country: put it in **State/City** and set **Country** to the nation.
 - The field labels (**Country**, **License plate number**, **State/City**,
   **Format**, **Visual characteristics**, **Vehicle**, **Confidence**) MUST
   appear exactly as written, in English.
@@ -150,16 +153,16 @@ country flag, region text, or official emblem on the plate.</observation>
 </example>
 
 <example>
-<observation>Close-up photo of the rear of a blue Kia EV6. A yellow rear
-registration plate with black characters "HJ64 LPN" is clearly mounted on the
-vehicle.</observation>
+<observation>Photo of the rear of a silver SUV. A white license plate with the
+characters "JGR 7412" is mounted on the vehicle. The word "OHIO" is printed at
+the top of the plate.</observation>
 <response>
-**Country**: United Kingdom
-**License plate number**: HJ64 LPN
-**State/City**: Not visible
-**Format**: UK registration plate
-**Visual characteristics**: Yellow rear plate with black characters mounted on a blue Kia EV6
-**Vehicle**: Blue Kia EV6
+**Country**: United States
+**License plate number**: JGR 7412
+**State/City**: Ohio
+**Format**: US state plate
+**Visual characteristics**: White plate with dark characters and "OHIO" printed at the top
+**Vehicle**: Silver SUV
 **Confidence**: High
 </response>
 </example>
@@ -333,6 +336,9 @@ VALUES must be written in English.
 - Stop immediately after the final **Confidence** field. Do NOT add validation
   sentences, summaries, explanations, or conclusions after the structured
   blocks.
+- The **Country** field is the SOVEREIGN NATION (e.g., United States, Canada,
+  Brazil). A state or province name (e.g., a US state or a Canadian province)
+  is NOT a country: put it in **State/City** and set **Country** to the nation.
 - The field labels MUST appear exactly as written, in English.
 </critical_rules>
 
@@ -352,6 +358,23 @@ appear.</observation>
 **Vehicle**: Dark compact car
 **Video context**: Parking-lot video, medium distance, daylight
 **Confidence**: Medium
+</response>
+</example>
+
+<example>
+<observation>Dashcam video on a city street. A white sedan appears in several
+frames. A white license plate with "BKT 4419" is visible on the rear, and the
+word "ARIZONA" is printed at the top of the plate.</observation>
+<response>
+**Plate #**: 1
+**Country**: United States
+**License plate number**: BKT 4419
+**State/City**: Arizona
+**Format**: US state plate
+**Visual characteristics**: White plate with dark characters and "ARIZONA" at the top
+**Vehicle**: White sedan
+**Video context**: Dashcam footage on a city street, daytime
+**Confidence**: High
 </response>
 </example>
 
