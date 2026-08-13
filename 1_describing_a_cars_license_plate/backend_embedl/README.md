@@ -70,6 +70,13 @@ cp .env.example .env
 # edit .env as needed
 ```
 
+If `MODEL_NAME` points to a private or gated Hugging Face repository, set a valid token in `.env`:
+```bash
+HUGGINGFACE_TOKEN=hf_your_token_here
+```
+
+You can also authenticate globally with `hf auth login`. A token defined in `.env` is passed explicitly to the model and processor loaders.
+
 ### <font color="blue">`3.` Start the server</font>
 ```bash
 ./run.sh
@@ -124,8 +131,10 @@ curl http://localhost:8000/api/v1/jobs/<job_id>
 | `DEVICE`             | `auto`                              | `auto` / `cuda` / `cpu` / `mps`        |
 | `DTYPE`              | `auto`                              | `float16` on GPU, `float32` on CPU     |
 | `MODEL_NAME`         | `embedl/Cosmos-Reason2-2B-W4A16`    | VLM model to load                       |
+| `HUGGINGFACE_TOKEN`  | empty                               | Token for private/gated Hugging Face models |
+| `HF_TOKEN`           | empty                               | Alternative token variable name         |
 | `MAX_UPLOAD_MB`      | `100`                               | Upload size limit                       |
-| `MAX_NEW_TOKENS`     | `300`                               | Maximum tokens in generated response    |
+| `MAX_NEW_TOKENS`     | `600`                               | Maximum tokens in generated response    |
 | `JOB_TTL_MINUTES`    | `30`                                | Time before cleaning finished jobs       |
 | `CORS_ORIGINS`       | `localhost:3000, 5173, 4173`        | Allowed origins by CORS                 |
 
